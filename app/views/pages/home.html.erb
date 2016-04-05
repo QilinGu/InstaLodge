@@ -1,0 +1,138 @@
+<div class="fade-slider">
+  <div class="slide"><img src="https://52syww-dm2305.files.1drv.com/y3m0k997UhHRP8bmcmNTCmqYmaBfm9p9j0z8h__fmcXh8_SurNN5rZYvPYtcMorAR2_jTATc8LbB25bSiDSBFDpShwxOiJ6LX2dLKJ6Jh2bstj2toja_Se_f68IL5mmVxb6bgbJuqMvJwnnPAQ-60s3BCq7Uc0ZMxIqnIx_89_qNtI?width=3713&height=2475&cropmode=none"></div>
+	<div class="slide"><img src="https://72t9tg-dm2305.files.1drv.com/y3mlvjRZDEN9LWS2USiihm8Ziv6hvf4yTsSEuyG8J21OPSx2479KiO6gwvHIY4SYp0lx7wP1bNbwcn_Ob3ZJY8cgSnyK4ow0FSb_iolJTI3DDKrF_nIQmCLzfNbYXNvbWBWXMqNY9JvA2QYcrlfWKBl2b48TwHCPNo5G8OINynjMJ0?width=4896&height=3264&cropmode=none"></div>
+	<div class="slide"><img src="https://8gt9tg-dm2305.files.1drv.com/y3mzZLGMA45ShuDoyxxcWkk0Mypg334Z7WvtLEVLLy1Vmp0dIDEBCW9h66FWVFcOdml1bPhkmBl2ozvHCdMiwqQyzmtgqxFsSK889ORefZWrYWL1goLfFXO9joEc07UY6QfjkQCiuEfTPrFJHyGWjdQwxREP1_zJ8yzZ-QKkQ30F_8?width=5616&height=3744&cropmode=none"></div>
+	<div class="slide"><img src="https://62syww-dm2305.files.1drv.com/y3mf0CxfqXNK70zRAJodDtFuO3aiH5Pvqm5565pGnyg9_OYXRlljUPapKgKiBO7bAbLH2egAWLpTBi6LPv_53K5wZe9e6tQENx226_HpE5lfXMZnssPWO6TXfF3HfEXL-whQC0N6_3ybPPfLSDTOhQlplWhfR4v23QSwqR8sZhFMYA?width=3000&height=2000&cropmode=none"></div>
+	<div class="slide"><img src="https://72syww-dm2305.files.1drv.com/y3m22HSOCygtdLVeY_LyVTbNljHMWXcKfK9rs70EzzoTU5EechjOl2knnnyjjEavqWJXjis3DBEBlPppsli8Xry0459dVUIQ9Zw6GmereKr0pIQ4Ju9I6u_DM8CWP4A99-zvEtz9Re8-qr6RBiuxkE1e9az_3oJkIFbtkAondSa-Kg?width=4545&height=3000&cropmode=none"></div>
+</div>
+
+<div class="container">
+<%= form_tag search_path, method: :get do %>
+	<div class="row">
+		<div class="col-md-6">
+			<%= text_field_tag :search, params[:search], placeholder: "Where are you going?", class: "form-control" %>
+		</div>
+		<div class="col-md-2">
+			<%= text_field_tag :start_date, params[:start_date], placeholder: "Start Date", class: "form-control" %>
+		</div>
+		<div class="col-md-2">
+			<%= text_field_tag :end_date, params[:end_date], placeholder: "End Date", class: "form-control" %>
+		</div>
+		<div class="col-md-2">
+			<%= submit_tag "Search", class: "btn btn-primary" %>
+		</div>
+	</div>
+<% end %>
+
+<br>
+
+<div class="text-center">
+	<h2>Just for the weekend</h2>
+	<p>Discover new, inspiring places close to home.</p>
+</div>
+
+<br>
+
+<div class="row">
+	<div class="col-md-4 col-sm-12">
+		<a href="http://instalodge.herokuapp.com/search?utf8=%E2%9C%93&search=new+york">
+			<div class="discovery-card" style="background-image: url('https://s3-us-west-2.amazonaws.com/summertree/app+photos/Maui.jpg')">
+				<div class="va-container">
+					<div class="va-middle text-center">
+						<h2><strong>Maui</strong></h2>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+
+	<div class="col-md-4 col-sm-6">
+		<a href="http://instalodge.herokuapp.com/search?utf8=%E2%9C%93&search=london">
+			<div class="discovery-card" style="background-image: url('https://s3-us-west-2.amazonaws.com/summertree/app+photos/Portland.jpg')">
+				<div class="va-container">
+					<div class="va-middle text-center">
+						<h2><strong>Portland</strong></h2>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+
+	<div class="col-md-4 col-sm-6">
+		<a href="http://instalodge.herokuapp.com/search?utf8=%E2%9C%93&search=berlin">
+			<div class="discovery-card" style="background-image: url('https://s3-us-west-2.amazonaws.com/summertree/app+photos/HongKong.jpg')">
+				<div class="va-container">
+					<div class="va-middle text-center">
+						<h2><strong>Hong Kong</strong></h2>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+
+<br>
+
+<div class="text-center">
+	<h2>Explore the world</h2>
+	<p>See what peopel are travelling, all around the world.</p>
+</div>
+
+<br>
+
+<div class="row">
+	<% @rooms.each do |room| %>
+
+		<div class="col-md-4">
+			<div class="panel panel-default">
+				<div class="panel-heading preview">
+					<%= image_tag room.photos[0].image.url(:medium) if room.photos.length > 0 %>
+				</div>
+				<div class="panel-body">
+					<%= image_tag avatar_url(room.user), class: "img-circle avatar-small" %>&nbsp;
+					<%= link_to room.listing_name, room %>
+				</div>
+			</div>
+		</div>
+
+	<% end %>
+</div>
+</div>
+
+<script>
+	$(function() {
+		$("#start_date").datepicker({
+			dateFormat: 'dd-mm-yy',
+			minDate: 0,
+			maxDate: '3m',
+			onSelect: function(selected) {
+				$('#end_date').datepicker("option", "minDate", selected);
+				$('#end_date').attr('disabled', false);
+			}
+		});
+
+		$("#end_date").datepicker({
+			dateFormat: 'dd-mm-yy',
+			minDate: 0,
+			maxDate: '3m',
+			onSelect: function(selected) {
+				$('#start_date').datepicker("option", "maxDate", selected);
+			}
+		});
+	})
+
+	$(document).ready(function(){
+		$('.fade-slider').slick({
+			dots: false,
+			infinite: true,
+			speed: 500,
+			fade: true,
+			autoplay: true,
+			autoplaySpeed: 2500,
+			cssEase: 'linear'
+		});
+	});
+
+
+
+</script>
